@@ -33,26 +33,26 @@ const Todos = ({ filterBy, todos, updateTodos }) => {
   /**
    * Base CSS class
    */
-  const baseCls = 'todos';
+const baseCls = 'todos';
 
-  /**
-   * Callback function to delete todo from todos collection
-   *
-   * @param  {object} json - Resulting JSON from fetch
-   */
-   const deleteTodo = json => {
+/**
+ * Callback function to delete todo from todos collection
+ *
+ * @param  {object} json - Resulting JSON from fetch
+ */
+ const deleteTodo = json => {
 
-     const index = todos.findIndex(todo => {
-       return todo.id === json.id;
-     });
+ const index = todos.findIndex(todo => {
+   return todo.id === json.id;
+ });
 
-     updateTodos(
-       [
-         ...todos.slice(0, index),
-         ...todos.slice(index + 1),
-       ]
-     );
-   }
+ updateTodos(
+   [
+     ...todos.slice(0, index),
+     ...todos.slice(index + 1),
+   ]
+ );
+}
   /**
    * Callback function to replace todo with results of fetching the todo PUT endpoint
    *
@@ -96,6 +96,13 @@ const Todos = ({ filterBy, todos, updateTodos }) => {
     api('PUT', newTodo, putTodo);
   }
 
+  const onClickArchive = todo => {
+    const newTodo = Object.assign({}, todo);
+    newTodo.archive = true;
+
+    api('PUT', newTodo, putTodo);
+  }
+
   /**
    * Renders All Todos
    *
@@ -121,6 +128,7 @@ const Todos = ({ filterBy, todos, updateTodos }) => {
           filtered={filtered}
           onClickDelete={onClickDelete.bind(this, todo)}
           onClickTodo={onClickTodo.bind(this, todo)}
+          onClickArchive={onClickArchive.bind(this, todo)}
           status={todo.status}
           text={todo.text}
         />

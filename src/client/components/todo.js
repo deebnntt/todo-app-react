@@ -25,6 +25,7 @@ const defaultProps = {
   filtered: false,
   onClickDelete: noop,
   onClickTodo: noop,
+  onClickArchive: noop,
   status: '',
   text: '',
 };
@@ -33,7 +34,7 @@ const defaultProps = {
  * Todo component
  * @returns {ReactElement}
  */
-const Todo = ({ filtered, onClickDelete, onClickTodo, status, text }) => {
+const Todo = ({ filtered, onClickDelete, onClickArchive, onClickTodo, status, text }) => {
   /**
    * Base CSS class
    */
@@ -50,7 +51,7 @@ const Todo = ({ filtered, onClickDelete, onClickTodo, status, text }) => {
     <li className={todoCls}>
       <span className="checkbox" className={checkboxCls}>{"."}</span>
       <TodoLink text={text} onClick={onClickTodo} checkboxCls={checkboxCls}/>
-
+      {status === 'complete' ? <span className="archive" onClick={onClickArchive} >archive</span> : '' }
       <Button text="Delete" onClick={onClickDelete} />
     </li>
   );
