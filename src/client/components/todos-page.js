@@ -7,6 +7,7 @@ import Navbar from './navbar';
 import TodoForm from './todo-form';
 import TodoLink from './todo-link';
 import Todos from './todos';
+import SummaryBar from './summary-bar.js'
 
 /**
  * TodosPage component
@@ -45,6 +46,7 @@ class TodosPage extends React.Component {
     this.postTodo = this.postTodo.bind(this);
     this.setFilterBy = this.setFilterBy.bind(this);
     this.updateTodos = this.updateTodos.bind(this);
+    this.completeAll = this.completeAll.bind(this);
   }
 
   /**
@@ -96,6 +98,23 @@ class TodosPage extends React.Component {
      this.setState({ todos });
    }
 
+   /**
+    * Mark all active todos as complete
+    *
+    */
+   completeAll() {
+     console.log("ur clicking me")
+     const todoList = [...this.state.todos]
+
+     for (let i = 0; i < todoList.length; i++) {
+       if (todoList[i].status === "active") {
+         let newTodo = Object.assign({}, todoList[i]);
+         newTodo.status = "complete"
+         api('PUT', newTodo, this.putTodo);
+       }
+     }
+   }
+
   /**
    * Render
    * @returns {ReactElement}
@@ -104,7 +123,7 @@ class TodosPage extends React.Component {
     return (
       <div className={this.baseCls}>
         <Navbar filterBy={this.state.filterBy} onClickFilter={this.setFilterBy} />
-
+        <SummaryBar todos={this.state.todos} completeAll={this.completeAll}/>
         <TodoForm onSubmit={this.addTodo} />
 
         <Todos

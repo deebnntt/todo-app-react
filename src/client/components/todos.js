@@ -92,14 +92,16 @@ const baseCls = 'todos';
     console.log("ur clicking me")
     const newTodo = Object.assign({}, todo);
     newTodo.status = todo.status === 'complete' ? 'active' : 'complete';
+    newTodo.archive = false;
 
     api('PUT', newTodo, putTodo);
   }
 
   const onClickArchive = todo => {
+    console.log("ur clicking archive")
     const newTodo = Object.assign({}, todo);
     newTodo.archive = true;
-
+    console.log(newTodo.archive)
     api('PUT', newTodo, putTodo);
   }
 
@@ -118,6 +120,9 @@ const baseCls = 'todos';
         case 'completed':
           filtered = todo.status !== 'complete';
           break;
+        case 'archived':
+          filtered = todo.archive !== true;
+        break;
         default:
           filtered = false;
       }
