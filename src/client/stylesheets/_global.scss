@@ -1,12 +1,21 @@
 // Global layout.
+@mixin font-size($sizeValue: 1.6) {
+  font-size: ($sizeValue * 10) + px;
+  font-size: $sizeValue + rem;
+}
+
 body {
   background: map-get($colors, ui-light);
+  font-family: sans-serif;
+  width: 100%;
+  height: 100%;
+  margin: 0;
 }
 
 .container {
   margin: 0 auto;
   max-width: 1000px;
-  padding: 0 20px;
+  padding: 0 10%;
   width: 100%;
 }
 
