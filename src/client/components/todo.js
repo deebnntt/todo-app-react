@@ -43,9 +43,13 @@ const Todo = ({ filtered, onClickDelete, onClickTodo, status, text }) => {
     + (status === 'complete' ? ' todo--status-complete' : '')
     + (filtered ? ' todo--filtered' : '');
 
+  const checkboxCls = 'checkbox'
+    + (status === 'complete' ? ' checkbox--status-complete' : '')
+
   return (
     <li className={todoCls}>
-      <TodoLink text={text} onClick={onClickTodo} />
+      <span className="checkbox" className={checkboxCls}>{"."}</span>
+      <TodoLink text={text} onClick={onClickTodo} checkboxCls={checkboxCls}/>
 
       <Button text="Delete" onClick={onClickDelete} />
     </li>

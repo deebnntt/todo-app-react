@@ -58,8 +58,42 @@ app.delete('/todos/:id', function(req, res) {
 });
 
 app.put('/todos/:id', function(req, res) {
-  res.status(500).send({"message": "not implemented"});
+  var id = req.params.id;
+  var index = todos.findIndex(function(todo) {
+    return todo.id == id;
+  });
+
+  todos[index].status = req.body.data.status
+
+  res.json(todos[index]);
 });
+
+
+// app.put('/todos/:id', function(req, res) {
+//   var id = req.params.id
+//   var { archive, text, status } = req.body.data
+//   const validStatus = ['complete', 'active']
+//
+//   var index = todos.findIndex(function(todo) {
+//     return todo.id == id;
+//   });
+//
+//   var todo = todos[index]
+//
+//   if (!text) {
+//     return res.status(400).json({"message": "text is required"});
+//   }
+//
+//   if (!validStatus.includes(status)) {
+//     return res.status(400).json({"message": "status is not valid"});
+//   }
+//
+//   todo.archive = archive;
+//   todo.status = status;
+//   todo.text = text;
+//
+//   res.json(todo);
+// });
 
 // Node server.
 var port = 3000;

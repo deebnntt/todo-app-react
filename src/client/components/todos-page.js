@@ -45,7 +45,7 @@ class TodosPage extends React.Component {
     this.postTodo = this.postTodo.bind(this);
     this.setFilterBy = this.setFilterBy.bind(this);
     this.updateTodos = this.updateTodos.bind(this);
-    this.resetTodos = this.resetTodos.bind(this);
+    this.updateStatus = this.updateStatus.bind(this);
   }
 
   /**
@@ -97,10 +97,21 @@ class TodosPage extends React.Component {
      this.setState({ todos });
    }
 
-  resetTodos(todos) {
-    console.log(todos)
-    this.setState({ todos });
+  updateStatus(json) {
+    console.log("i'm being clicked")
+    const index = this.state.todos.findIndex(todo => {
+      return todo.id === json.id;
+    });
+
+    this.updateTodos(
+      [
+      ...this.state.todos.slice(0, index),
+      json,
+      ...this.state.todos.slice(index + 1),
+      ]
+      );
   }
+
   /**
    * Render
    * @returns {ReactElement}
@@ -116,6 +127,7 @@ class TodosPage extends React.Component {
           filterBy={this.state.filterBy}
           todos={this.state.todos}
           updateTodos={this.updateTodos}
+          updateStatus={this.updateStatus}
         />
       </div>
     );

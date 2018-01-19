@@ -29,7 +29,7 @@ const defaultProps = {
  * Todos component
  * @returns {ReactElement}
  */
-const Todos = ({ filterBy, todos, updateTodos, resetTodos }) => {
+const Todos = ({ filterBy, todos, updateTodos }) => {
   /**
    * Base CSS class
    */
@@ -91,7 +91,6 @@ const Todos = ({ filterBy, todos, updateTodos, resetTodos }) => {
   const onClickTodo = todo => {
     const newTodo = Object.assign({}, todo);
     newTodo.status = todo.status === 'complete' ? 'active' : 'complete';
-    newTodo.archive = false;
 
     api('PUT', newTodo, putTodo);
   }
