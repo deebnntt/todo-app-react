@@ -21,7 +21,7 @@ app.get('/', function(req, res) {
 });
 
 app.get('/todos', function(req, res) {
-  res.json(JSON.stringify(todos));
+  res.json(todos);
 });
 
 app.get('/todos/:id', function(req, res) {
@@ -47,7 +47,14 @@ app.post('/todos', function(req, res) {
 });
 
 app.delete('/todos/:id', function(req, res) {
-  res.status(500).send({"message": "not implemented"});
+  var id = req.params.id;
+  var index = todos.findIndex(function(todo) {
+    return todo.id == id;
+  })
+
+  todos.splice(index, 1)
+
+  res.json(id)
 });
 
 app.put('/todos/:id', function(req, res) {

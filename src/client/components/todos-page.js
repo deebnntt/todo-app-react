@@ -45,6 +45,7 @@ class TodosPage extends React.Component {
     this.postTodo = this.postTodo.bind(this);
     this.setFilterBy = this.setFilterBy.bind(this);
     this.updateTodos = this.updateTodos.bind(this);
+    this.resetTodos = this.resetTodos.bind(this);
   }
 
   /**
@@ -92,13 +93,14 @@ class TodosPage extends React.Component {
    *
    * @param  {Array} todos - Array of todo objects
    */
-  updateTodos(json) {
-    const todos = JSON.parse(json)
-    this.setState({
-      todos: todos,
-    });
-  }
+   updateTodos(todos) {
+     this.setState({ todos });
+   }
 
+  resetTodos(todos) {
+    console.log(todos)
+    this.setState({ todos });
+  }
   /**
    * Render
    * @returns {ReactElement}
