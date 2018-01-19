@@ -30,7 +30,7 @@ app.get('/todos/:id', function(req, res) {
     return todo.id === id;
   });
 
-  res.json(JSON.stringify(todos[index]));
+  res.json(todos[index]);
 });
 
 app.post('/todos', function(req, res) {
@@ -47,14 +47,15 @@ app.post('/todos', function(req, res) {
 });
 
 app.delete('/todos/:id', function(req, res) {
-  var id = req.params.id;
-  var index = todos.findIndex(function(todo) {
-    return todo.id == id;
-  })
+  var id = parseInt(req.params.id);
+  var index = todos.findIndex( todo => {
+    return todo.id === id;
+  });
 
+  let todo = todos[index]
   todos.splice(index, 1)
 
-  res.json(id)
+  res.json(todos);
 });
 
 app.put('/todos/:id', function(req, res) {

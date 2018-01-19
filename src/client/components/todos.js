@@ -40,19 +40,20 @@ const baseCls = 'todos';
  *
  * @param  {object} json - Resulting JSON from fetch
  */
- const deleteTodo = json => {
+ //was creating an async issue, went straight to updateTodos
+ // const deleteTodo = json => {
+ //   const index = todos.findIndex(todo => {
+ //     return todo.id === json.id;
+ //   });
+ //
+ //   updateTodos(
+ //     [
+ //       ...todos.slice(0, index),
+ //       ...todos.slice(index + 1),
+ //     ]
+ //   );
+ // }
 
- const index = todos.findIndex(todo => {
-   return todo.id === json.id;
- });
-
- updateTodos(
-   [
-     ...todos.slice(0, index),
-     ...todos.slice(index + 1),
-   ]
- );
-}
   /**
    * Callback function to replace todo with results of fetching the todo PUT endpoint
    *
@@ -79,7 +80,7 @@ const baseCls = 'todos';
    * @param {object} todo - Todo object
    */
   const onClickDelete = todo => {
-    api('DELETE', todo, deleteTodo);
+    api('DELETE', todo, updateTodos);
   };
 
   /**
