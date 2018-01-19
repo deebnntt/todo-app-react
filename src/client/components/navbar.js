@@ -10,6 +10,7 @@ const noop = () => {};
 const propTypes = {
   filterBy: React.PropTypes.string,
   onClickFilter: React.PropTypes.func,
+  archiveAll: React.PropTypes.func,
 };
 
 /**
@@ -19,13 +20,14 @@ const propTypes = {
 const defaultProps = {
   filterBy: '',
   onClickFilter: noop,
+  archiveAll: noop,
 };
 
 /**
  * Navbar component
  * @returns {ReactElement}
  */
-const Navbar = ({ filterBy, onClickFilter }) => {
+const Navbar = ({ filterBy, onClickFilter, archiveAll }) => {
   /**
    * Base CSS class
    */
@@ -39,7 +41,7 @@ const Navbar = ({ filterBy, onClickFilter }) => {
 
   let archivedLinkCls = `${baseCls}__item`;
   archivedLinkCls += filterBy === 'archived' ? ` ${baseCls}__item--active` : '';
-  
+
   return (
     <div className={baseCls}>
       <Link
@@ -68,6 +70,8 @@ const Navbar = ({ filterBy, onClickFilter }) => {
       >
         Archived
       </span>
+
+    	<span className="archiveAll" onClick={() => archiveAll()}> Archive all completed</span>
     </div>
   );
 }

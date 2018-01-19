@@ -47,6 +47,7 @@ class TodosPage extends React.Component {
     this.setFilterBy = this.setFilterBy.bind(this);
     this.updateTodos = this.updateTodos.bind(this);
     this.completeAll = this.completeAll.bind(this);
+    this.archiveAll = this.archiveAll.bind(this);
   }
 
   /**
@@ -103,13 +104,28 @@ class TodosPage extends React.Component {
     *
     */
    completeAll() {
-     console.log("ur clicking me")
      const todoList = [...this.state.todos]
 
      for (let i = 0; i < todoList.length; i++) {
        if (todoList[i].status === "active") {
          let newTodo = Object.assign({}, todoList[i]);
          newTodo.status = "complete"
+         api('PUT', newTodo, this.putTodo);
+       }
+     }
+   }
+
+   /**
+    * Move all completed todos to archive
+    *
+    */
+   archiveAll() {
+     const todoList = [...this.state.todos]
+
+     for (let i = 0; i < todoList.length; i++) {
+       if (todoList[i].status === "complete") {
+         let newTodo = Object.assign({}, todoList[i]);
+         newTodo.archive = true
          api('PUT', newTodo, this.putTodo);
        }
      }
@@ -122,7 +138,7 @@ class TodosPage extends React.Component {
   render() {
     return (
       <div className={this.baseCls}>
-        <Navbar filterBy={this.state.filterBy} onClickFilter={this.setFilterBy} />
+        <Navbar filterBy={this.state.filterBy} onClickFilter={this.setFilterBy} archiveAll={this.archiveAll}/>
         <SummaryBar todos={this.state.todos} completeAll={this.completeAll}/>
         <TodoForm onSubmit={this.addTodo} />
 
