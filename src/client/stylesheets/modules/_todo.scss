@@ -6,18 +6,37 @@
   font-size: 1.5rem;
   color: map-get($colors, darkgrey);
 
+  .todo-link {
+  	height: 100px;
+  	vertical-align: middle;
+  	align-items: center;
+  	display: inline;
+  	margin-left: 2.5rem;
+  	margin-right: 0.7rem;
+  	padding: 10px;
+ }
+
   &--status-complete {
     text-decoration: line-through;
+    color: map-get($colors, lightgray)
   }
 
   &--filtered {
     display: none;
   }
+}
 
-  &__checkbox {
-    height: 1rem;
-    transform: scale(1.5);
-    display: inline-block;
-    border-radius: 0px;
-  }
+.checkbox {
+  cursor: pointer;
+  border: 1px dotted map-get($colors, darkgray);
+  display: inline-block;
+  height: 0.8rem;
+  width: 0.8rem;
+  background: -webkit-linear-gradient($lightgray, white);
+  background: -o-linear-gradient($lightgray, white);
+  background: linear-gradient($lightgray, white);
+
+    &--status-complete {
+      background: map-get($colors, green);
+    }
 }

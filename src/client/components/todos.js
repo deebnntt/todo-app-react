@@ -90,7 +90,6 @@ const baseCls = 'todos';
    * @param {object} todo - Todo object
    */
   const onClickTodo = todo => {
-    console.log("ur clicking me")
     const newTodo = Object.assign({}, todo);
     newTodo.status = todo.status === 'complete' ? 'active' : 'complete';
     newTodo.archive = false;
@@ -99,7 +98,6 @@ const baseCls = 'todos';
   }
 
   const onClickArchive = todo => {
-    console.log("ur clicking archive")
     const newTodo = Object.assign({}, todo);
     newTodo.archive = true;
     console.log(newTodo.archive)
@@ -136,6 +134,7 @@ const baseCls = 'todos';
           onClickTodo={onClickTodo.bind(this, todo)}
           onClickArchive={onClickArchive.bind(this, todo)}
           status={todo.status}
+          archive={todo.archive}
           text={todo.text}
         />
       );

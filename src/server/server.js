@@ -40,6 +40,7 @@ app.post('/todos', function(req, res) {
   }
 
   var id = todos.length + 1;
+
   var newTodo = { "id": id, "text": text, "status": "active" };
   todos.push(newTodo);
 
@@ -55,6 +56,18 @@ app.delete('/todos/:id', function(req, res) {
   let todo = todos[index]
   todos.splice(index, 1)
 
+  res.json(todos);
+});
+
+app.patch('/todos', function(req, res) {
+
+  for(let i=0; i<todos.length; i++) {
+    if (todos[i].status === "complete") {
+      todos[i].archived = "true"
+    } else {
+      todos[i].status = "complete"
+    }
+  }
   res.json(todos);
 });
 

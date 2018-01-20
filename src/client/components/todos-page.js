@@ -48,6 +48,7 @@ class TodosPage extends React.Component {
     this.updateTodos = this.updateTodos.bind(this);
     this.completeAll = this.completeAll.bind(this);
     this.archiveAll = this.archiveAll.bind(this);
+    this.patchTodos = this.patchTodos.bind(this);
   }
 
   /**
@@ -99,37 +100,28 @@ class TodosPage extends React.Component {
      this.setState({ todos });
    }
 
+   patchTodos(json) {
+     console.log(json)
+     this.setState({
+       todos: [...json] });
+   }
+
    /**
     * Mark all active todos as complete
     *
     */
    completeAll() {
-     const todoList = [...this.state.todos]
-
-     for (let i = 0; i < todoList.length; i++) {
-       if (todoList[i].status === "active") {
-         let newTodo = Object.assign({}, todoList[i]);
-         newTodo.status = "complete"
-         api('PUT', newTodo, this.putTodo);
-       }
+       api('PATCH', null, this.patchTodos);
      }
-   }
 
    /**
     * Move all completed todos to archive
     *
     */
    archiveAll() {
-     const todoList = [...this.state.todos]
-
-     for (let i = 0; i < todoList.length; i++) {
-       if (todoList[i].status === "complete") {
-         let newTodo = Object.assign({}, todoList[i]);
-         newTodo.archive = true
-         api('PUT', newTodo, this.putTodo);
+        api('PATCH', null, this.patchTodos);
        }
-     }
-   }
+
 
   /**
    * Render
