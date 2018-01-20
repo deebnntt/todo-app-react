@@ -19,25 +19,7 @@ app.get('/', function(req, res) {
 
   res.render('index', {bundle});
 });
-//
-// app.get('/active', function(req, res) {
-//   var bundle = `//${req.hostname}:8080/public/bundle.js`;
-//
-//   res.render('index', {bundle});
-// });
-//
-// app.get('/completed', function(req, res) {
-//   var bundle = `//${req.hostname}:8080/public/bundle.js`;
-//
-//   res.render('index', {bundle});
-// });
-//
-// app.get('/archived', function(req, res) {
-//   var bundle = `//${req.hostname}:8080/public/bundle.js`;
-//
-//   res.render('index', {bundle});
-// });
-//
+
 app.get('/todos', function(req, res) {
   res.json(todos);
 });
@@ -78,11 +60,17 @@ app.delete('/todos/:id', function(req, res) {
 });
 
 app.patch('/todos', function(req, res) {
-
   for(let i=0; i<todos.length; i++) {
     if (todos[i].status === "complete") {
       todos[i].archive = true
-    } else if (todos[i].status !== "complete"){
+    }
+  }
+  res.json(todos);
+});
+
+app.put('/todos', function(req, res) {
+  for(let i=0; i<todos.length; i++) {
+    if (todos[i].status === "active") {
       todos[i].status = "complete"
     }
   }

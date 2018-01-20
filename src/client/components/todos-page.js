@@ -110,7 +110,7 @@ class TodosPage extends React.Component {
     *
     */
    completeAll() {
-       api('PATCH', null, this.patchTodos);
+       api('PUT', null, this.patchTodos);
      }
 
    /**

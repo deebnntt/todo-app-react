@@ -27,7 +27,7 @@ export function api(method, data, cb) {
  */
 export function getApiPromise(method, data) {
   let url = 'http://localhost:3000/todos';
-  if (['DELETE', 'PUT'].indexOf(method) !== -1) {
+  if (data && ['DELETE', 'PUT'].indexOf(method) !== -1) {
     url += `/${data.id}`;
   }
 
