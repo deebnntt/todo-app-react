@@ -109,24 +109,24 @@ const baseCls = 'todos';
    *
    * @returns {Array} - Returns an array of Todo React Elements
    */
-  const renderTodos = () => {
-    return todos.map(todo => {
-      let filtered;
-      switch (filterBy) {
-        case 'all':
-          filtered = todo.archive !== false;
-        case 'active':
-          filtered = todo.status !== 'active';
-          break;
-        case 'completed':
-          filtered = todo.archive !== false || todo.status !== 'complete';
-          break;
-        case 'archived':
-          filtered = todo.status === 'active' || todo.archive === false;
-        break;
-        default:
-          filtered = todo.archive !== false;
-      }
+   const renderTodos = () => {
+     return todos.map(todo => {
+       let filtered;
+       switch (filterBy) {
+         case 'all':
+           filtered = todo.archive !== false;
+         case 'active':
+           filtered = todo.status !== 'active';
+           break;
+         case 'completed':
+           filtered = todo.archive || todo.status !== 'complete';
+           break;
+         case 'archived':
+           filtered = !todo.archive
+         break;
+         default:
+           filtered = todo.archive !== false;
+       }
 
       return (
         <Todo

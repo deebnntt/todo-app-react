@@ -81,8 +81,8 @@ app.patch('/todos', function(req, res) {
 
   for(let i=0; i<todos.length; i++) {
     if (todos[i].status === "complete") {
-      todos[i].archive = "true"
-    } else {
+      todos[i].archive = true
+    } else if (todos[i].status !== "complete"){
       todos[i].status = "complete"
     }
   }
