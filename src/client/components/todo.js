@@ -49,7 +49,12 @@ const Todo = ({ filtered, onClickDelete, onClickArchive, onClickTodo, status, te
 
   return (
     <li className={todoCls}>
-      <span className="checkbox" className={checkboxCls} onClick={onClickTodo}>{"."}</span>
+      <input
+        type="checkbox"
+        checked={status === 'complete'}
+        className={baseCls + '__checkbox'}
+        onChange={onClickTodo}
+      />
       <TodoLink text={text} checkboxCls={checkboxCls}/>
       {status === "complete" ? <Button onClick={onClickArchive} uttonClass="button--archive" text="Archive"/> : '' }
       <Button text="X" buttonClass="button--delete"

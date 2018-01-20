@@ -13,4 +13,11 @@
   &--filtered {
     display: none;
   }
+
+  &__checkbox {
+    height: 1rem;
+    transform: scale(1.5);
+    display: inline-block;
+    border-radius: 0px;
+  }
 }
