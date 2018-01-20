@@ -21,12 +21,14 @@ const defaultProps = {
 
 const SummaryBar = ({ todos, completeAll }) => {
 
+  const baseCls = 'summary-bar';
+
   const activeTodosCount = todos.filter(todo => todo.status === 'active').length;
 
   return (
-  	<div className="summaryBar">
+  	<div className={baseCls}>
   	{ activeTodosCount } task{ activeTodosCount === 1 ? "" : "s" } remaining
-  	<span className="completeAll" onClick={() => completeAll()}>Complete All</span>
+  	<span className={baseCls + '__link'} onClick={() => completeAll()}>Complete All</span>
   	</div>
   );
 }

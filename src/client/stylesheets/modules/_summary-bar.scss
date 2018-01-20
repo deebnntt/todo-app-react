@@ -1,0 +1,25 @@
+// SummaryBar module
+.summary-bar {
+  padding: 2rem 5rem;
+  font-size: 1.3rem;
+  color: map-get($colors, darkgrey);
+
+  &__link {
+    color: map-get($colors, primary);
+    margin-left: 0.5rem;
+    font-size: 0.9rem;
+    font-weight: bolder;
+    text-decoration: none;
+    display: inline-block;
+    margin-right: 1rem;
+  }
+
+  &__link:hover {
+    color: map-get($colors, darkgrey);
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+    margin-right: 1rem;
+  }
+
+}

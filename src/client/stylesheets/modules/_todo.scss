@@ -1,6 +1,10 @@
 // Todo module.
 .todo {
   cursor: pointer;
+  border-bottom: 1px solid $lightgray;
+  padding: 2rem 0;
+  font-size: 1.5rem;
+  color: map-get($colors, darkgrey);
 
   &--status-complete {
     text-decoration: line-through;
