@@ -114,16 +114,16 @@ const baseCls = 'todos';
       let filtered;
       switch (filterBy) {
         case 'active':
-          filtered = todo.status === 'complete';
+          filtered = todo.status !== 'active';
           break;
         case 'completed':
-          filtered = todo.status !== 'complete';
+          filtered = todo.archive !== false || todo.status !== 'complete';
           break;
         case 'archived':
-          filtered = todo.archive !== true;
+          filtered = todo.status === 'active' || todo.archive === false;
         break;
         default:
-          filtered = false;
+          filtered = todo.archive !== false;
       }
 
       return (
