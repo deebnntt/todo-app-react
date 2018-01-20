@@ -113,6 +113,8 @@ const baseCls = 'todos';
     return todos.map(todo => {
       let filtered;
       switch (filterBy) {
+        case 'all':
+          filtered = todo.archive !== false;
         case 'active':
           filtered = todo.status !== 'active';
           break;
