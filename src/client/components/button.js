@@ -24,11 +24,11 @@ const defaultProps = {
  * Button component
  * @returns {ReactElement}
  */
-const Button = ({ text, onClick }) => {
+const Button = ({ text, onClick, buttonClass }) => {
   /**
    * Base CSS class
    */
-  const baseCls = 'button';
+   const baseCls = 'button ' + buttonClass;
 
   return (
     <button className={baseCls} onClick={onClick}>

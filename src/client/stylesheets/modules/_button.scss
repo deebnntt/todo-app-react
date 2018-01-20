@@ -1,0 +1,26 @@
+// Button module
+.button {
+  background-color: map-get($colors, green);
+  color: white;
+  border-radius: 0.2rem;
+  border: 0;
+  padding: .3rem .6rem;
+
+  &:hover {
+    cursor: pointer;
+    color: map-get($colors, darkgray);
+  }
+
+  &--navbar {
+    float: right;
+  }
+
+  &--delete {
+    background-color: map-get($colors, ui-transparent);
+    color: map-get($colors, gray);
+    float: right;
+    margin-right: 1rem;
+    font-size: 1rem;
+  }
+
+}

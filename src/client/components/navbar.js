@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router';
+import Button from './button.js'
 
 const noop = () => {};
 
@@ -71,7 +72,11 @@ const Navbar = ({ filterBy, onClickFilter, archiveAll }) => {
         Archived
       </span>
 
-    	<span className="archiveAll" onClick={() => archiveAll()}> Archive all completed</span>
+      <Button
+        buttonClass="button--navbar"
+        onClick={() => archiveAll()}
+        text="Archive all completed"
+      />
     </div>
   );
 }
