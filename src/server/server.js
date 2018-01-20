@@ -19,25 +19,25 @@ app.get('/', function(req, res) {
 
   res.render('index', {bundle});
 });
-
-app.get('/active', function(req, res) {
-  var bundle = `//${req.hostname}:8080/public/bundle.js`;
-
-  res.render('index', {bundle});
-});
-
-app.get('/completed', function(req, res) {
-  var bundle = `//${req.hostname}:8080/public/bundle.js`;
-
-  res.render('index', {bundle});
-});
-
-app.get('/archived', function(req, res) {
-  var bundle = `//${req.hostname}:8080/public/bundle.js`;
-
-  res.render('index', {bundle});
-});
-
+//
+// app.get('/active', function(req, res) {
+//   var bundle = `//${req.hostname}:8080/public/bundle.js`;
+//
+//   res.render('index', {bundle});
+// });
+//
+// app.get('/completed', function(req, res) {
+//   var bundle = `//${req.hostname}:8080/public/bundle.js`;
+//
+//   res.render('index', {bundle});
+// });
+//
+// app.get('/archived', function(req, res) {
+//   var bundle = `//${req.hostname}:8080/public/bundle.js`;
+//
+//   res.render('index', {bundle});
+// });
+//
 app.get('/todos', function(req, res) {
   res.json(todos);
 });

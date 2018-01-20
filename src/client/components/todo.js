@@ -15,6 +15,7 @@ const propTypes = {
   onClickTodo: React.PropTypes.func,
   status: React.PropTypes.string,
   text: React.PropTypes.string,
+  archive: React.PropTypes.bool,
 };
 
 /**

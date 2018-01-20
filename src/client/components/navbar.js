@@ -51,7 +51,7 @@ const Navbar = ({ filterBy, onClickFilter, archiveAll }) => {
       <Link
         to="/"
         className={allCls}
-        onClick={() => onClickFilter('all')}
+        onClick={() => onClickFilter('')}
       >
         All
       </Link>

@@ -7,7 +7,8 @@ const noop = () => {};
  * @private
  */
 const propTypes = {
-  activeTodos: React.PropTypes.number
+  activeTodos: React.PropTypes.number,
+  completeAll: React.PropTypes.func,
 };
 
 /**

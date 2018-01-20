@@ -101,7 +101,6 @@ class TodosPage extends React.Component {
    }
 
    patchTodos(json) {
-     console.log(json)
      this.setState({
        todos: [...json] });
    }

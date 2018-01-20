@@ -89,18 +89,24 @@ const baseCls = 'todos';
    *
    * @param {object} todo - Todo object
    */
-  const onClickTodo = todo => {
-    const newTodo = Object.assign({}, todo);
-    newTodo.status = todo.status === 'complete' ? 'active' : 'complete';
-    newTodo.archive = false;
+   const onClickTodo = todo => {
+     const newTodo = Object.assign({}, todo);
+     newTodo.status = todo.status === 'complete' ? 'active' : 'complete';
+     newTodo.archive = false;
 
-    api('PUT', newTodo, putTodo);
-  }
+     api('PUT', newTodo, putTodo);
+   }
 
+  /**
+   * Click handler for clicking on the archive button
+   * Adds item to the archive
+   *
+   * @param {object} todo - Todo object
+   */
   const onClickArchive = todo => {
     const newTodo = Object.assign({}, todo);
     newTodo.archive = true;
-    console.log(newTodo.archive)
+
     api('PUT', newTodo, putTodo);
   }
 
@@ -114,7 +120,7 @@ const baseCls = 'todos';
        let filtered;
        switch (filterBy) {
          case 'all':
-           filtered = todo.archive !== false;
+           filtered = todo.archive;
          case 'active':
            filtered = todo.status !== 'active';
            break;
@@ -125,7 +131,7 @@ const baseCls = 'todos';
            filtered = !todo.archive
          break;
          default:
-           filtered = todo.archive !== false;
+           filtered = todo.archive;
        }
 
       return (
