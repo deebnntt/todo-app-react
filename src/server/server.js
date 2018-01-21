@@ -20,6 +20,26 @@ app.get('/', function(req, res) {
   res.render('index', {bundle});
 });
 
+//Additional Routes
+
+app.get('/active', function(req, res) {
+  var bundle = `//${req.hostname}:8080/public/bundle.js`;
+
+  res.render('index', {bundle});
+});
+
+app.get('/completed', function(req, res) {
+  var bundle = `//${req.hostname}:8080/public/bundle.js`;
+
+  res.render('index', {bundle});
+});
+
+app.get('/archived', function(req, res) {
+  var bundle = `//${req.hostname}:8080/public/bundle.js`;
+
+  res.render('index', {bundle});
+});
+
 app.get('/todos', function(req, res) {
   res.json(todos);
 });
@@ -79,12 +99,14 @@ app.put('/todos', function(req, res) {
 
 app.put('/todos/:id', function(req, res) {
   var id = req.params.id;
+  var status = req.body.data.status
+  var archive = req.body.data.archive
   var index = todos.findIndex(function(todo) {
     return todo.id == id;
   });
 
-  todos[index].status = req.body.data.status
-  todos[index].archive = req.body.data.archive
+  todos[index].status = status
+  todos[index].archive = archive
 
   res.json(todos[index]);
 });

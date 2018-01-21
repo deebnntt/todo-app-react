@@ -24,7 +24,7 @@ const SummaryBar = ({ todos, completeAll }) => {
 
   const baseCls = 'summary-bar';
 
-  const activeTodosCount = todos.filter(todo => todo.status === 'active').length;
+  const activeTodosCount = todos.filter(todo => todo.status !== 'complete').length;
 
   return (
   	<div className={baseCls}>
