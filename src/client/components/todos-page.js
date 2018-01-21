@@ -100,6 +100,10 @@ class TodosPage extends React.Component {
      this.setState({ todos });
    }
 
+   /**
+    * Callback function for archiveAll() & completeAll()
+    *
+    */
    patchTodos(json) {
      this.setState({
        todos: [...json],
@@ -112,7 +116,7 @@ class TodosPage extends React.Component {
     */
    completeAll() {
        api('PUT', null, this.patchTodos);
-     }
+    }
 
    /**
     * Move all completed todos to archive
@@ -120,7 +124,7 @@ class TodosPage extends React.Component {
     */
    archiveAll() {
         api('PATCH', null, this.patchTodos);
-       }
+    }
 
 
   /**

@@ -20,7 +20,7 @@ app.get('/', function(req, res) {
   res.render('index', {bundle});
 });
 
-//Additional Routes
+//Additional Routes - active, completed, archived
 
 app.get('/active', function(req, res) {
   var bundle = `//${req.hostname}:8080/public/bundle.js`;

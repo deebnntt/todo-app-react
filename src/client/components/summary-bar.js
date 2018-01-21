@@ -28,7 +28,7 @@ const SummaryBar = ({ todos, completeAll }) => {
 
   return (
   	<div className={baseCls}>
-  	{ activeTodosCount } task{ activeTodosCount === 1 ? "" : "s" } remaining
+  	<span>{ activeTodosCount } task{ activeTodosCount === 1 ? "" : "s" } remaining</span>
   	<span className={baseCls + '__link'} onClick={() => completeAll()}>Complete All</span>
   	</div>
   );

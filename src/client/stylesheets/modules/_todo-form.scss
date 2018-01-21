@@ -10,7 +10,8 @@
     background: linear-gradient($lightgray, white);
     border: 1px solid map-get($colors, lightgray);
     border-radius: 4px;
-    font-size: 1.5rem;
+    font-size: 1.8rem;
+    font-weight: 300;
     padding: .7rem 1.2rem;
 
     &::placeholder {

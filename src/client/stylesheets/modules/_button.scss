@@ -4,7 +4,8 @@
   color: white;
   border-radius: 0.2rem;
   border: 0;
-  padding: .3rem .6rem;
+  padding: .3rem .8rem;
+  font-size: .8rem;
 
   &:hover {
     cursor: pointer;
@@ -13,6 +14,8 @@
 
   &--navbar {
     float: right;
+    display: inline-block;
+    margin-top: -0.2rem;
   }
 
   &--delete {

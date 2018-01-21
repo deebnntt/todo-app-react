@@ -1,7 +1,7 @@
 // Navbar module
 .navbar {
   background-color: map-get($colors, lightgray);
-  padding: 0.6rem 5rem;
+  padding: 1rem 5rem;
 
   &__item {
     color: map-get($colors, grey);
