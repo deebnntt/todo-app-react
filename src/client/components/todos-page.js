@@ -48,7 +48,6 @@ class TodosPage extends React.Component {
     this.updateTodos = this.updateTodos.bind(this);
     this.completeAll = this.completeAll.bind(this);
     this.archiveAll = this.archiveAll.bind(this);
-    this.patchTodos = this.patchTodos.bind(this);
   }
 
   /**
@@ -93,6 +92,7 @@ class TodosPage extends React.Component {
 
   /**
    * Update todos array state
+   * Used for delete, completeAll, archiveAll
    *
    * @param  {Array} todos - Array of todo objects
    */
@@ -101,21 +101,11 @@ class TodosPage extends React.Component {
    }
 
    /**
-    * Callback function for archiveAll() & completeAll()
-    *
-    */
-   patchTodos(json) {
-     this.setState({
-       todos: [...json],
-      });
-   }
-
-   /**
     * Mark all active todos as complete
     *
     */
    completeAll() {
-       api('PUT', null, this.patchTodos);
+       api('PUT', null, this.updateTodos);
     }
 
    /**
@@ -123,7 +113,7 @@ class TodosPage extends React.Component {
     *
     */
    archiveAll() {
-        api('PATCH', null, this.patchTodos);
+        api('PATCH', null, this.updateTodos);
     }
 
 

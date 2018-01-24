@@ -13,6 +13,7 @@ var todos = [
   {"id": 1, "text": "Hello, world!"},
   {"id": 2, "text": "Pick up groceries", "status": "complete"}
 ];
+var initialTodoId = 3;
 
 app.get('/', function(req, res) {
   var bundle = `//${req.hostname}:8080/public/bundle.js`;
@@ -59,7 +60,7 @@ app.post('/todos', function(req, res) {
     return res.status(400).json({"message": "text is required"});
   }
 
-  var id = todos.length + 1;
+  var id = initialTodoId++;
 
   var newTodo = { "id": id, "text": text, "status": "active" };
   todos.push(newTodo);
