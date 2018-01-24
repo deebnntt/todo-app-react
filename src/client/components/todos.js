@@ -35,24 +35,6 @@ const Todos = ({ filterBy, todos, updateTodos }) => {
    */
 const baseCls = 'todos';
 
-/**
- * Callback function to delete todo from todos collection
- *
- * @param  {object} json - Resulting JSON from fetch
- */
- //was creating an async issue, went straight to updateTodos
- // const deleteTodo = json => {
- //   const index = todos.findIndex(todo => {
- //     return todo.id === json.id;
- //   });
- //
- //   updateTodos(
- //     [
- //       ...todos.slice(0, index),
- //       ...todos.slice(index + 1),
- //     ]
- //   );
- // }
 
   /**
    * Callback function to replace todo with results of fetching the todo PUT endpoint
